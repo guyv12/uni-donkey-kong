@@ -2,6 +2,10 @@
 /src/*.dll
 /src/x64
 /src/x86
+/src/Debug
+/src/Release
+x64
+x86
 /Debug
 /Release
 /SDL2-2.0.10

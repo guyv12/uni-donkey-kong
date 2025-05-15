@@ -1,0 +1,7 @@
+.vs
+/src/*.dll
+/src/x64
+/src/x86
+/Debug
+/Release
+/SDL2-2.0.10

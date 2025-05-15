@@ -8,6 +8,7 @@ The simplest way to run the game:
 
 1. Clone this repository.
 2. Open the `.sln` file in **Visual Studio** – the project is already included.
+3. Be aware that SDL2.dll is a x86 dll - running it with x64 mode compiler won't work.
 
 ---
 

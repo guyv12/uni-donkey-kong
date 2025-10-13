@@ -10,7 +10,7 @@ Implementation of Donkey Kong in C++ (more like C, but with `const int` instead 
 2. Open the `.sln` file in **Visual Studio** – the project is already included.
 3. Be aware that `SDL2.dll` is a x86 DLL – running it with an x64 compiler configuration won't work.
 
-### Option 2: CMake (Cross-platform)
+### Option 2: CMake (Cross-platform and crashing on GCC)
 
 1. Ensure you have **SDL2 2.0.10** downloaded. You can get it here: [SDL2 2.0.10 Release](https://github.com/libsdl-org/SDL/releases/tag/release-2.0.10).
 2. Place the extracted SDL2.2.0.10 file in the project directory (next to CMakeLists.txt). 

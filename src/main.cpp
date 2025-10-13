@@ -8,8 +8,8 @@
 
 extern "C"
 {
-#include"../SDL2-2.0.10/include/SDL.h"
-#include"../SDL2-2.0.10/include/SDL_main.h"
+#include "SDL.h"
+#include "SDL_main.h"
 }
 
 const int SCREEN_WIDTH = 1200; //pixels
@@ -365,8 +365,8 @@ void drawStaticItems(screen_t screen, items_t items, level_t level);
 void drawDynamicItems(screen_t screen, items_t items);
 void draw(screen_t screen, colors_t colors, items_t items, level_t level, double worldTime);
 void drawHit(items_t items, screen_t screen);
-// rysowanie linii o d³ugoœci l w pionie (gdy dx = 0, dy = 1) 
-// b¹dŸ poziomie (gdy dx = 1, dy = 0)
+// rysowanie linii o dï¿½ugoï¿½ci l w pionie (gdy dx = 0, dy = 1) 
+// bï¿½dï¿½ poziomie (gdy dx = 1, dy = 0)
 // draw a vertical (when dx = 0, dy = 1) or horizontal (when dx = 1, dy = 0) line
 #pragma endregion
 
@@ -377,7 +377,7 @@ void handleXY(player_t player, double* distanceX, double* distanceY, double delt
 #pragma endregion
 
 void gameLoop(int t1, screen_t screen, char* text, SDL_Event event, colors_t colors, level_t* level, items_t* items, commands_t* commands);
-void handleTime(double t1, double* t2, double* delta, double* worldTime, int* quit, items_t* items);
+void handleTime(double* t1, double* t2, double* delta, double* worldTime, int* quit, items_t* items);
 
 #pragma region events
 void eventHandler(int* quit, player_t* player, platform_t* platform, ladder_t* ladder, SDL_Event event, level_t* level, commands_t* commands);
@@ -1762,11 +1762,11 @@ void handleBarrelX(barrel_t barrel, double* barrelDistanceX, double delta)
 void gameLoop(int t1, screen_t screen, char* text, SDL_Event event, colors_t colors, level_t* level, items_t* items, commands_t* commands)
 {
 	int quit = 0;
-	double t2, delta, frames = 0, distanceX = 0, distanceY = 0, worldTime = 120;
+	double t1d = double(t1), t2, delta, frames = 0, distanceX = 0, distanceY = 0, worldTime = 120;
 
 	while (!quit)
 	{
-		handleTime(t1, &t2, &delta, &worldTime, &quit, items);
+		handleTime(&t1d, &t2, &delta, &worldTime, &quit, items);
 
 		handleBarrelThrow(items);
 		physics(items, *level, screen, delta, &quit, commands);
@@ -1785,11 +1785,11 @@ void gameLoop(int t1, screen_t screen, char* text, SDL_Event event, colors_t col
 }
 
 
-void handleTime(double t1, double* t2, double* delta, double* worldTime, int* quit, items_t* items)
+void handleTime(double* t1, double* t2, double* delta, double* worldTime, int* quit, items_t* items)
 {
 	*t2 = SDL_GetTicks();
-	*delta = fmin((*t2 - t1) * 0.001, 0.002);
-	t1 = *t2;
+	*delta = fmin((*t2 - *t1) * 0.001, 0.002);
+	*t1 = *t2;
 	(&items->kong)->timer += *delta;
 	if (*worldTime <= 0)
 		*quit = 1;

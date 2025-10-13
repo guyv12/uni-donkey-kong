@@ -4,11 +4,34 @@ Implementation of Donkey Kong in C++ (more like C, but with `const int` instead 
 
 ## How to Run
 
-The simplest way to run the game:
+### Option 1: Visual Studio (Simplest and working thanks to MSVC)
 
 1. Clone this repository.
 2. Open the `.sln` file in **Visual Studio** – the project is already included.
-3. Be aware that SDL2.dll is a x86 dll - running it with x64 mode compiler won't work.
+3. Be aware that `SDL2.dll` is a x86 DLL – running it with an x64 compiler configuration won't work.
+
+### Option 2: CMake (Cross-platform)
+
+1. Ensure you have **SDL2 2.0.10** downloaded. You can get it here: [SDL2 2.0.10 Release](https://github.com/libsdl-org/SDL/releases/tag/release-2.0.10).
+2. Place the extracted SDL2.2.0.10 file in the project directory (next to CMakeLists.txt). 
+3. From the project root, create a build directory and configure with CMake:
+
+```bash
+mkdir build && cd build
+cmake ..
+cmake --build .
+```
+
+4. Move to the final build directory:
+```bash
+cd bin
+```
+
+5. Run the game:
+
+```bash
+./bin/DonkeyKong2
+```
 
 ---
 

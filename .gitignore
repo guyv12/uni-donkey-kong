@@ -432,3 +432,4 @@ FodyWeavers.xsd
 
 build/
 SDL2-2.0.10/
+src/libSDL2.a

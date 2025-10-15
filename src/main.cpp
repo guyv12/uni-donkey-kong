@@ -520,7 +520,7 @@ void generalLoop(int* t1, screen_t screen, char* text, SDL_Event event, colors_t
 
 void handleMainMenu(screen_t* screen, colors_t* colors, items_t* items, level_t* level, int* levelNum, char** playerName)
 {
-	SDL_Quit();
+	//SDL_Quit();
 	freeAll(screen, items, level);
 	initAll(screen, colors, level, items, levelNum, playerName);
 }
